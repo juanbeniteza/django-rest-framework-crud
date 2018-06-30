@@ -7,4 +7,3 @@ class MovieSerializer(serializers.ModelSerializer): # Definimos la clase para se
         model = Movie
         fields = ('title', 'genre', 'year', 'created_at', 'updated_at') # definimos que campos usar
 
-
