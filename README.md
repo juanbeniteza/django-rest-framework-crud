@@ -32,6 +32,11 @@ You can install httpie using pip:
 ```
 pip install httpie
 ```
+
+First, we have to start up Django's development server.
+```
+	python manage.py runserver
+```
 Only authenticated users can use the API services, for that reason if we try this:
 ```
 	http  http://127.0.0.1:8000/api/v1/movies/3
