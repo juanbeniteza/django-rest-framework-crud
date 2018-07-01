@@ -16,6 +16,7 @@
 In a RESTful API, endpoints (URLs) define the structure of the API and how end users access data from our application using the HTTP methods - GET, POST, PUT, DELETE. Endpoints should be logically organized around _collections_ and _elements_, both of which are resources.
 
 In our case, we have one single resource, `movies`, so we will use the following URLS - `/movies/` and `/movies/<id>` for collections and elements, respectively:
+
 Endpoint |HTTP Method | CRUD Method | Result
 -- | -- |-- |--
 `movies` | GET | READ | Get all movies
@@ -58,7 +59,7 @@ The API have some restrictions:
 http -a root:root1234 http://127.0.0.1:8000/api/v1/movies/
 http -a root:root1234 GET http://127.0.0.1:8000/api/v1/movies/3
 http -a root:root1234 POST http://127.0.0.1:8000/api/v1/movies/ title="Ant Man and The Wasp" genre="Action" year=2018
-http -a root:root1234 PUT http://127.0.0.1:8000/api/v1/movies/ title="AntMan and The Wasp" genre="Action" year=2018
+http -a root:root1234 PUT http://127.0.0.1:8000/api/v1/movies/3 title="AntMan and The Wasp" genre="Action" year=2018
 http -a root:root1234 DELETE http://127.0.0.1:8000/api/v1/movies/3
 ```
 Finally, I provide a DB to make these tests.
