@@ -14,7 +14,10 @@ def get_delete_update_movie(request, pk):  #pk es PrimaryKey(Id)
     try:
         movie = Movie.objects.get(pk=pk)
     except Movie.DoesNotExist:
-        return Response(status=status.HTTP_404_NOT_FOUND)
+        content = {
+            'status': 'Not Found'
+        }
+        return Response(content, status=status.HTTP_404_NOT_FOUND)
 
     # details a sinlge movie
     if request.method == 'GET':
@@ -36,8 +39,7 @@ def get_delete_update_movie(request, pk):  #pk es PrimaryKey(Id)
     # update a movie
     elif request.method == 'PUT':
         if(request.user == movie.creator): # If creator is who makes request
-            data = JSONParser().parse(request)
-            serializer = MovieSerializer(movie, data=data)
+            serializer = MovieSerializer(movie, data=request.data)
             if serializer.is_valid():
                 serializer.save()
                 return Response(serializer.data, status=status.HTTP_201_CREATED)
@@ -60,8 +62,7 @@ def get_post_movies(request):
 
     # create a new movie
     elif request.method == 'POST':
-        data = JSONParser().parse(request)
-        serializer = MovieSerializer(data=data)
+        serializer = MovieSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(creator=request.user)
             return Response(serializer.data, status=status.HTTP_201_CREATED)
