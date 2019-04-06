@@ -1,11 +1,10 @@
 from rest_framework.decorators import api_view, permission_classes
-from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework import status
 from rest_framework.parsers import JSONParser
 from .models import Movie
 from .serializers import MovieSerializer
-from .permissions import IsOwnerOrReadOnly
+from .permissions import IsOwnerOrReadOnly, IsAuthenticated
 
 
 @api_view(['GET', 'DELETE', 'PUT']) # Methods Allowed
@@ -54,6 +53,7 @@ def get_delete_update_movie(request, pk):  #pk es PrimaryKey(Id)
 @api_view(['GET', 'POST'])
 @permission_classes((IsAuthenticated, ))
 def get_post_movies(request):
+    print('adasd')
     # get all movies
     if request.method == 'GET':
         puppies = Movie.objects.all()
