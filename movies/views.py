@@ -61,12 +61,17 @@ class get_delete_update_movie(RetrieveUpdateDestroyAPIView):
    
 
 class get_post_movies(ListCreateAPIView):
-
-    permission_classes = (IsAuthenticated,)
+    serializer_class = MovieSerializer
+    #permission_classes = (IsAuthenticated,)
     # Get all movies
+    
+    def get_queryset(self):
+       movies = Movie.objects.all()
+       return movies
+    
     def get(self, request):
 
-        movies = Movie.objects.all()
+        movies = self.get_queryset()
         serializer = MovieSerializer(movies, many=True)
         return Response(serializer.data, status=status.HTTP_200_OK)
 
