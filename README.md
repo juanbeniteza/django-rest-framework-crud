@@ -3,7 +3,7 @@
 
 ## Requirements
 - Python 3.6
-- Django (1.10, 1.11, 2.0)
+- Django (2.1)
 - Django REST Framework
 - Django Rest Auth
 
@@ -80,7 +80,7 @@ And we can logout, the token must be your actual token
 http POST http://127.0.0.1:8000/rest-auth/logout/ "Authorization: Token <YOUR_TOKEN>" 
 ```
 
-The API have some restrictions:
+The API has some restrictions:
 -   The movies are always associated with a creator (user who created it).
 -   Only authenticated users may create and see movies.
 -   Only the creator of a movie may update or delete it.
