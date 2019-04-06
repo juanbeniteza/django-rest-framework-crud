@@ -94,5 +94,14 @@ http POST http://127.0.0.1:8000/api/v1/movies/ "Authorization: Token <YOUR_TOKEN
 http PUT http://127.0.0.1:8000/api/v1/movies/3 "Authorization: Token <YOUR_TOKEN>" title="AntMan and The Wasp" genre="Action" year=2018
 http DELETE http://127.0.0.1:8000/api/v1/movies/3 "Authorization: Token <YOUR_TOKEN>"
 ```
+
+### Pagination
+The API supports pagination, by default responses have a page_size=10 but if you want change that you can pass through params page=size=X
+```
+http http://127.0.0.1:8000/api/v1/movies/?page=1 "Authorization: Token <YOUR_TOKEN>"
+http http://127.0.0.1:8000/api/v1/movies/?page=3 "Authorization: Token <YOUR_TOKEN>"
+http http://127.0.0.1:8000/api/v1/movies/?page=3&page_size=15 "Authorization: Token <YOUR_TOKEN>"
+```
+
 Finally, I provide a DB to make these tests.
 
