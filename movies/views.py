@@ -4,6 +4,7 @@ from rest_framework.generics import RetrieveUpdateDestroyAPIView, ListCreateAPIV
 from .models import Movie
 from .permissions import IsOwnerOrReadOnly, IsAuthenticated
 from .serializers import MovieSerializer
+from .pagination import CustomPagination
 
 class get_delete_update_movie(RetrieveUpdateDestroyAPIView):
     serializer_class = MovieSerializer
@@ -64,21 +65,21 @@ class get_delete_update_movie(RetrieveUpdateDestroyAPIView):
 class get_post_movies(ListCreateAPIView):
     serializer_class = MovieSerializer
     permission_classes = (IsAuthenticated,)
-    # Get all movies
+    pagination_class = CustomPagination
     
     def get_queryset(self):
        movies = Movie.objects.all()
        return movies
-    
-    def get(self, request):
 
+    # Get all movies
+    def get(self, request):
         movies = self.get_queryset()
-        serializer = MovieSerializer(movies, many=True)
-        return Response(serializer.data, status=status.HTTP_200_OK)
+        paginate_queryset = self.paginate_queryset(movies)
+        serializer = self.serializer_class(paginate_queryset, many=True)
+        return self.get_paginated_response(serializer.data)
 
     # Create a new movie
     def post(self, request):
-
         serializer = MovieSerializer(data=request.data)
         if serializer.is_valid():
             serializer.save(creator=request.user)
