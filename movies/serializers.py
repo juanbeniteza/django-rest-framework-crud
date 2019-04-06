@@ -3,8 +3,7 @@ from .models import Movie
 from django.contrib.auth.models import User
 
 
-
-class MovieSerializer(serializers.ModelSerializer): # create classs to serializer model
+class MovieSerializer(serializers.ModelSerializer):  # create class to serializer model
     creator = serializers.ReadOnlyField(source='creator.username')
 
     class Meta:
@@ -12,7 +11,7 @@ class MovieSerializer(serializers.ModelSerializer): # create classs to serialize
         fields = ('title', 'genre', 'year', 'creator')
 
 
-class UserSerializer(serializers.ModelSerializer): #create class to serealizer usermodel
+class UserSerializer(serializers.ModelSerializer):  # create class to serializer usermodel
     movies = serializers.PrimaryKeyRelatedField(many=True, queryset=Movie.objects.all())
 
     class Meta:
