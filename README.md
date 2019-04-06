@@ -46,7 +46,7 @@ Only authenticated users can use the API services, for that reason if we try thi
 ```
 we get:
 ```
- {  "detail":  "Authentication credentials were not provided."  }
+ {  "detail":  "You must be authenticated"  }
 ```
 Instead, if we try to access with credentials:
 ```

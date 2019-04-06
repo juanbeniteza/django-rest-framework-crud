@@ -6,6 +6,7 @@ from .permissions import IsOwnerOrReadOnly, IsAuthenticated
 from .serializers import MovieSerializer
 
 class get_delete_update_movie(RetrieveUpdateDestroyAPIView):
+    serializer_class = MovieSerializer
     permission_classes = (IsAuthenticated, IsOwnerOrReadOnly,)
 
     def get_queryset(self, pk):
@@ -62,7 +63,7 @@ class get_delete_update_movie(RetrieveUpdateDestroyAPIView):
 
 class get_post_movies(ListCreateAPIView):
     serializer_class = MovieSerializer
-    #permission_classes = (IsAuthenticated,)
+    permission_classes = (IsAuthenticated,)
     # Get all movies
     
     def get_queryset(self):
