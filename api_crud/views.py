@@ -25,7 +25,6 @@ class RegisterView(CreateAPIView):
         return super(RegisterView, self).dispatch(*args, **kwargs)
 
     def create(self, request, *args, **kwargs):
-        print('here')
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
         user = self.perform_create(serializer)
@@ -45,11 +44,14 @@ class RegisterView(CreateAPIView):
 
 
 class CustomLoginView(LoginView):
+    
     def get_response(self):
         orginal_response = super().get_response()
+
         custom_response = {"user": {
             "username": self.user.username,
             "email": self.user.email
         }}
+        
         orginal_response.data.update(custom_response)
         return orginal_response
