@@ -29,7 +29,7 @@ ALLOWED_HOSTS = []
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
-        'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     )
 }
 
@@ -44,13 +44,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'authentication',
     'movies',
-    'rest_framework.authtoken',
-    'rest_auth',
-    'django.contrib.sites',
-    'allauth',
-    'allauth.account',
-    'rest_auth.registration',
 ]
 
 SITE_ID = 1
