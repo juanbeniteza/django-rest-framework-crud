@@ -11,7 +11,7 @@ class MovieSerializer(serializers.ModelSerializer):  # create class to serialize
         fields = ('id', 'title', 'genre', 'year', 'creator')
 
 
-class UserSerializer(serializers.ModelSerializer):  # create class to serializer usermodel
+class UserSerializer(serializers.ModelSerializer):  # create class to serializer user model
     movies = serializers.PrimaryKeyRelatedField(many=True, queryset=Movie.objects.all())
 
     class Meta:
