@@ -140,3 +140,6 @@ http DELETE "http://127.0.0.1:8000/api/v1/movies/{movie_id}/" "Authorization: Be
 ## Contributing
 Feel free to contribute to the project. Open a pull request or create issues if you encounter any problems.
 
+## Issues
+If you have any issues or questions, please open an issue on the GitHub repository.
+```
