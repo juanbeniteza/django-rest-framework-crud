@@ -140,12 +140,3 @@ http DELETE "http://127.0.0.1:8000/api/v1/movies/{movie_id}/" "Authorization: Be
 ## Contributing
 Feel free to contribute to the project. Open a pull request or create issues if you encounter any problems.
 
-## Issues
-If you have any issues or questions, please open an issue on the GitHub repository.
-```
-
-<<<<<<< HEAD
-This README provides a clear structure and instructions for users to set up and use your Django REST Framework CRUD API. Feel free to make any additional adjustments based on your preferences.
-=======
-This updated README provides a clear structure and instructions for users to set up and use your Django REST Framework CRUD API. Feel free to make any additional adjustments based on your preferences.
->>>>>>> fc3f0b1619fc09574328885d8b13aedca08e25e6
